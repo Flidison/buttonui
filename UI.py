@@ -47,15 +47,17 @@ class Ap(Ui_MainWindow,QMainWindow):
         d = random.randint(20, 100)
         x = random.randint(0, self.width() - d)
         y = random.randint(0, self.height() - d)
-        self.arr.append((x, y, d))
+        color=QColor(random.randint(0,255),random.randint(0,255),random.randint(0,255))
+        self.arr.append((x, y, d,color))
         self.update()
 
     def paintEvent(self, event):
         painter = QPainter(self)
 
-        painter.setBrush(QColor("yellow"))
 
-        for x, y, diameter in self.arr:
+
+        for x, y, diameter,color in self.arr:
+            painter.setBrush(color)
             painter.drawEllipse(x, y, diameter, diameter)
 
 
